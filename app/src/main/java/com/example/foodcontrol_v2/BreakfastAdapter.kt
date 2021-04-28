@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.foodcontrol_v2.fragments.Data
+import java.io.Serializable
 
 
 class ProductAdapter(private var activity: Context, private var items: ArrayList<Product>): BaseAdapter() {
@@ -81,4 +82,4 @@ class ProductAdapter(private var activity: Context, private var items: ArrayList
     }
 }
 
-data class Product(val title: String, val description: String)
+data class Product(val title: String, val description: String) : Serializable
