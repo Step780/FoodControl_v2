@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+
+    <Spinner
+        android:id="@+id/spinDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="80dp"
+        android:entries="@array/dayName"
+        android:gravity="center_horizontal"
+        android:spinnerMode="dropdown"
+        android:text="Текущая неделя"
+        android:textAlignment="center"
+        android:textColor="#000000">
+
+    </Spinner>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="330dp"
+        android:layout_marginLeft="30dp"
+        android:text="Н"
+        android:textColor="#000000"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="330dp"
+        android:layout_marginRight="30dp"
+        android:text="В"
+        android:textColor="#000000"
+        >
+
+    </Button>
+
+
+
+
+
+</FrameLayout>

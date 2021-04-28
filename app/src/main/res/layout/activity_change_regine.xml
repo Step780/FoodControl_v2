@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangeRegine">
+
+    <RadioGroup
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+
+        <RadioButton
+            android:id="@+id/sitRegine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/pol"
+            android:hint="Сидячий образ жизни без нагрузок"
+            android:textColorHint="#000000"
+
+            >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/trainingRegine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Тренировки 1-3 раза в неделю"
+            app:layout_constraintTop_toBottomOf="@id/male"
+            android:textColorHint="#000000"
+            >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/classesRegine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Занятия 3-5 дней в неделю"
+            app:layout_constraintTop_toBottomOf="@id/male"
+            android:textColorHint="#000000"
+            >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/intensRegine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Интенсивные тренировки 6-7 раз в неделю"
+            app:layout_constraintTop_toBottomOf="@id/male"
+            android:textColorHint="#000000"
+            >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/sportsmanRegine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Спортсмены, выполняющие упражнения чаще, чем раз в день"
+            app:layout_constraintTop_toBottomOf="@id/male"
+            android:textColorHint="#000000"
+            >
+
+        </RadioButton>
+
+
+
+
+    </RadioGroup>
+
+
+
+    <Button
+        android:id="@+id/changeButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Изменить"
+        android:onClick="btnChange"
+        android:background="@drawable/round_button">
+
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

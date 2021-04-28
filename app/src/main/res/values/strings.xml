@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FoodControl_v2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="dayName">
+        <item>Сегодня</item>
+        <item>Вчера</item>
+        <item>Позавчера</item>
+    </string-array>
+</resources>
