@@ -61,8 +61,8 @@ class ProductAdapter(private var activity: Context, private var items: ArrayList
         }
 
         var userDto = items[position]
-        viewHolder.txtName?.text = userDto.getText()
-        viewHolder.descName?.text = userDto.getCheck()
+        viewHolder.txtName?.text = userDto.title
+        viewHolder.descName?.text = userDto.description
 
         return view as View
     }
@@ -80,20 +80,5 @@ class ProductAdapter(private var activity: Context, private var items: ArrayList
         return items.size
     }
 }
-data class Product( var title:String, var description: String) {
-    fun getText(): String {
-        return title
-    }
 
-    fun setText(text: String) {
-        this.title = text
-    }
-
-    fun getCheck(): String {
-        return description
-    }
-
-    fun setCheck(check: String) {
-        this.description = check
-    }
-}
+data class Product(val title: String, val description: String)
