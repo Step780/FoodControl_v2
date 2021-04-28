@@ -3,12 +3,12 @@ package com.example.foodcontrol_v2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.foodcontrol_v2.fragments.FoodSearch
-import com.example.foodcontrol_v2.fragments.ListViewAdapter
 import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.ObjectInputStream
@@ -17,6 +17,10 @@ import java.lang.Exception
 import kotlin.collections.ArrayList
 
 class Breakfast : AppCompatActivity() {
+
+    val BREAKFAST_FILE_NAME = "Breakfast"
+    val TAG = "Breakfast"
+
     lateinit var txtProduct: TextView
     lateinit var listProducts: ListView
     var products = ArrayList<String>()
@@ -32,17 +36,22 @@ class Breakfast : AppCompatActivity() {
 
         listProducts = findViewById(R.id.listProducts)
 
-        val path = getFileStreamPath("Breakfast")
+        val path = getFileStreamPath(BREAKFAST_FILE_NAME)
 
         val p : ArrayList<String>
 
 
-
-        val fis: FileInputStream = this.openFileInput("Breakfast")
-        val hm = ObjectInputStream(fis)
-        p = hm.readObject() as ArrayList<String>
-        hm.close()
-        fis.close()
+        if (getFileStreamPath(BREAKFAST_FILE_NAME).exists()) {
+            Log.d(TAG, "file exists")
+            val fis: FileInputStream = this.openFileInput(BREAKFAST_FILE_NAME)
+            val hm = ObjectInputStream(fis)
+            p = hm.readObject() as ArrayList<String>
+            hm.close()
+            fis.close()
+        } else {
+            Log.d(TAG, "file not exists")
+            p = arrayListOf()
+        }
 
         prod = ArrayList()
 
@@ -83,7 +92,7 @@ class Breakfast : AppCompatActivity() {
 
             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                 p.removeAt(position)
-                val fos: FileOutputStream = this.openFileOutput("Breakfast", Context.MODE_PRIVATE)
+                val fos: FileOutputStream = this.openFileOutput(BREAKFAST_FILE_NAME, Context.MODE_PRIVATE)
                 val os = ObjectOutputStream(fos)
                 os.writeObject(p)
                 os.close()
@@ -113,7 +122,7 @@ class Breakfast : AppCompatActivity() {
 
 
 
-        val fos: FileOutputStream = this.openFileOutput("Breakfast", Context.MODE_PRIVATE)
+        val fos: FileOutputStream = this.openFileOutput(BREAKFAST_FILE_NAME, Context.MODE_PRIVATE)
         val os = ObjectOutputStream(fos)
         os.writeObject(p)
         os.close()
