@@ -38,29 +38,29 @@ class Breakfast : AppCompatActivity() {
 
         val path = getFileStreamPath(BREAKFAST_FILE_NAME)
 
-        val p : ArrayList<String>
+        val products: ArrayList<Product>
 
 
         if (getFileStreamPath(BREAKFAST_FILE_NAME).exists()) {
             Log.d(TAG, "file exists")
             val fis: FileInputStream = this.openFileInput(BREAKFAST_FILE_NAME)
             val hm = ObjectInputStream(fis)
-            p = hm.readObject() as ArrayList<String>
+            products = hm.readObject() as ArrayList<Product>
             hm.close()
             fis.close()
         } else {
             Log.d(TAG, "file not exists")
-            p = arrayListOf()
+            products = arrayListOf()
         }
 
         prod = ArrayList()
 
         try {
             var extras = intent.extras!!
-            var product = extras.getString("item")
-            var desc = extras.getString("itemdesc")
-            p.add(product.toString())
-            products.add(product.toString())
+            var product = extras.getString("item")!!
+            var desc = extras.getString("itemdesc")!!
+            products.add(Product(product, desc))
+            this.products.add(product.toString())
             prod.add(Product(product.toString(), desc.toString()))
         }
         catch (e: Exception)
@@ -77,9 +77,9 @@ class Breakfast : AppCompatActivity() {
         showData()
 
 
-//        var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, p)
-//
-//        listProducts.adapter = adapter
+        var adapter = ProductAdapter(this, products)
+
+        listProducts.adapter = adapter
 
 
         listProducts.setOnItemClickListener { parent, view, position, id ->
@@ -91,10 +91,10 @@ class Breakfast : AppCompatActivity() {
             //builder.setPositiveButton("OK", DialogInterface.OnClickListener(function = x))
 
             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-                p.removeAt(position)
+                products.removeAt(position)
                 val fos: FileOutputStream = this.openFileOutput(BREAKFAST_FILE_NAME, Context.MODE_PRIVATE)
                 val os = ObjectOutputStream(fos)
-                os.writeObject(p)
+                os.writeObject(products)
                 os.close()
                 fos.close()
 
@@ -124,7 +124,7 @@ class Breakfast : AppCompatActivity() {
 
         val fos: FileOutputStream = this.openFileOutput(BREAKFAST_FILE_NAME, Context.MODE_PRIVATE)
         val os = ObjectOutputStream(fos)
-        os.writeObject(p)
+        os.writeObject(products)
         os.close()
         fos.close()
 
